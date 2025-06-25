@@ -1,1 +1,107 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gradient Scroll Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #fff;
+      perspective: 1000px;
+      overflow-x: hidden;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      text-align: center;
+      transition: transform 1s ease, opacity 1s ease;
+      opacity: 0;
+      transform: rotateX(80deg) scale(0.8);
+      padding: 0 20px;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: rotateX(0deg) scale(1);
+    }
+
+    section:nth-child(1) {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    section:nth-child(2) {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+    }
+
+    section:nth-child(3) {
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+    }
+
+    section:nth-child(4) {
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+    }
+
+    section:nth-child(5) {
+      background: linear-gradient(135deg, #00b09b, #96c93d);
+    }
+
+    section:nth-child(6) {
+      background: linear-gradient(135deg, #fc466b, #3f5efb);
+    }
+
+    section:nth-child(7) {
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+    }
+
+    h1 {
+      transform: rotateY(-10deg);
+      transition: transform 1s ease;
+    }
+
+    section.visible h1 {
+      transform: rotateY(0deg);
+    }
+  </style>
+</head>
+<body>
+
+  <section><h1>Welcome to My Gradient World</h1></section>
+  <section><h1>Scroll Down Smoothly</h1></section>
+  <section><h1>Beautiful 3D Rotation</h1></section>
+  <section><h1>Every Section Stands Out</h1></section>
+  <section><h1>Just HTML, CSS, JS</h1></section>
+  <section><h1>Deploy Easily on GitHub Pages</h1></section>
+  <section><h1>Thanks for Scrolling 🚀</h1></section>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
